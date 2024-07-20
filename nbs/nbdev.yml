@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "nbdev-double-descent-dar"
+  site-url: "https://jeanimal.github.io/nbdev-double-descent-dar"
+  description: "Reproducing double descent with nbdev from a paper by Dar"
+  repo-branch: main
+  repo-url: "https://github.com/jeanimal/nbdev-double-descent-dar"
