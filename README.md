@@ -29,7 +29,68 @@ pip install nbdev_double_descent_dar
 Fill me in please! Don’t forget code examples:
 
 ``` python
-1+1
+import numpy as np
+import pandas as pd
 ```
 
-    2
+``` python
+X = pd.DataFrame({'a':range(1,10), 'b':range(2,11), 'c':range(3,12)})
+y = pd.DataFrame({'target':range(100,110)})
+X, y
+```
+
+    (   a   b   c
+     0  1   2   3
+     1  2   3   4
+     2  3   4   5
+     3  4   5   6
+     4  5   6   7
+     5  6   7   8
+     6  7   8   9
+     7  8   9  10
+     8  9  10  11,
+        target
+     0     100
+     1     101
+     2     102
+     3     103
+     4     104
+     5     105
+     6     106
+     7     107
+     8     108
+     9     109)
+
+``` python
+random_state=1
+num_rows=3
+num_cols=2
+
+X_sub, y_sub = sample_rows_and_cols(X, y, num_rows, num_cols, random_state=random_state, replace=False)
+```
+
+    NameError: name 'np' is not defined
+    [0;31m---------------------------------------------------------------------------[0m
+    [0;31mNameError[0m                                 Traceback (most recent call last)
+    Cell [0;32mIn[12], line 5[0m
+    [1;32m      2[0m num_rows[38;5;241m=[39m[38;5;241m3[39m
+    [1;32m      3[0m num_cols[38;5;241m=[39m[38;5;241m2[39m
+    [0;32m----> 5[0m X_sub, y_sub [38;5;241m=[39m [43msample_rows_and_cols[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[43mnum_rows[49m[43m,[49m[43m [49m[43mnum_cols[49m[43m,[49m[43m [49m[43mrandom_state[49m[38;5;241;43m=[39;49m[43mrandom_state[49m[43m,[49m[43m [49m[43mreplace[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+
+    File [0;32m~/Code/nbdev-double-descent-dar/nbdev_double_descent_dar/core.py:45[0m, in [0;36msample_rows_and_cols[0;34m(X, y, num_sampled_rows, num_sampled_columns, random_state, replace)[0m
+    [1;32m     17[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+    [1;32m     18[0m [38;5;124;03mSamples the same num_sampled_rows from X and y and sample num_sampled_columns from X.[39;00m
+    [1;32m     19[0m 
+    [0;32m   (...)[0m
+    [1;32m     42[0m [38;5;124;03m    Sampled version of the input dataframes where X.shape == (num_sampled_rows, num_sampled_columns) and y.shape == (num_sampled_rows, 1)[39;00m
+    [1;32m     43[0m [38;5;124;03m"""[39;00m
+    [1;32m     44[0m [38;5;66;03m# TODO: find a version of random choice that does let users control the random_state.[39;00m
+    [0;32m---> 45[0m indices [38;5;241m=[39m [43mnp[49m[38;5;241m.[39mrandom[38;5;241m.[39mchoice(X[38;5;241m.[39mindex, num_sampled_rows, replace[38;5;241m=[39mreplace)
+    [1;32m     46[0m X_subset [38;5;241m=[39m X[38;5;241m.[39miloc[indices]
+    [1;32m     47[0m y_subset [38;5;241m=[39m y[38;5;241m.[39miloc[indices]
+
+    [0;31mNameError[0m: name 'np' is not defined
+
+``` python
+X_sub, y_sub
+```

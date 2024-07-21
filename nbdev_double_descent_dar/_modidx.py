@@ -6,5 +6,7 @@ d = { 'settings': { 'branch': 'main',
                 'git_url': 'https://github.com/jeanimal/nbdev-double-descent-dar',
                 'lib_path': 'nbdev_double_descent_dar'},
   'syms': { 'nbdev_double_descent_dar.core': { 'nbdev_double_descent_dar.core.foo2': ('core.html#foo2', 'nbdev_double_descent_dar/core.py'),
+                                               'nbdev_double_descent_dar.core.sample_rows_and_cols': ( 'core.html#sample_rows_and_cols',
+                                                                                                       'nbdev_double_descent_dar/core.py'),
                                                'nbdev_double_descent_dar.core.say_hello': ( 'core.html#say_hello',
                                                                                             'nbdev_double_descent_dar/core.py')}}}
