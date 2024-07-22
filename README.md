@@ -32,7 +32,6 @@ pip install nbdev_double_descent_dar
 Fill me in please! Don’t forget code examples:
 
 ``` python
-import numpy as np
 import pandas as pd
 ```
 
@@ -65,10 +64,6 @@ X, y
      9     109)
 
 ``` python
-# I am re-adding these imports so examples work but they should be included in the package
-import pandas as pd
-import numpy as np
-
 random_state=1
 num_rows=3
 num_cols=2
