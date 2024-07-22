@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nsample_rows_and_cols\n\n sample_rows_and_cols (X:pandas.core.frame.DataFrame,\n                       y:pandas.core.frame.DataFrame,\n                       num_sampled_rows:int, num_sampled_columns:int,\n                       random_state:int, replace:bool)\n\n*Samples the same num_sampled_rows from X and y and sample num_sampled_columns from X.\nReturns a tuple of the sampled X and y with matched rows, so they must have the same number of rows.\nSampling is can be with or without replacement based on the boolean value of replace.*\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\nX\nDataFrame\nDataFrame to sample. If replace=False, must have shape &gt;= (num_sampled_rows, num_sampled_columns).\n\n\ny\nDataFrame\nSingle-column dataFrame to sample. If replace=False, must have shape &gt; (num_sampled_rows, 1).\n\n\nnum_sampled_rows\nint\nInteger number of rows to sample.\n\n\nnum_sampled_columns\nint\nInteger number of columns to sample.\n\n\nrandom_state\nint\nInteger random state for the random sample, useful for reproducible testing. Do not set in production.\n\n\nreplace\nbool\nWhether to sample with replacement\n\n\nReturns\ntuple\nSampled version of the input dataframes where X.shape == (num_sampled_rows, num_sampled_columns) and y.shape == (num_sampled_rows, 1)\n\n\n\n\n# Happy case test.\nX = pd.DataFrame({'a':range(1,10), 'b':range(2,11), 'c':range(3,12)})\ny = pd.DataFrame({'target':range(100,110)})\nrandom_state=1\nnum_rows=3\nnum_cols=2\n# precondition: y should have one column\ntest_eq(y.shape[1], 1)\nX_sub, y_sub = sample_rows_and_cols(X, y, num_rows, num_cols, random_state=random_state, replace=False)\ntest_eq(y_sub.shape, (num_rows, 1))\ntest_eq(X_sub.shape, (num_rows, num_cols))\n# TODO: Test that the y rows match the x rows\n\n\n# Test no data in y.\ny = pd.DataFrame()\ntest_fail(lambda: \n          sample_rows_and_cols(X, y, num_rows, num_cols, random_state=random_state, replace=False),\n          contains=\"out-of-bounds\")",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "nbdev-double-descent-dar",
+    "section": "",
+    "text": "Reproducing the ideas from this wonderful paper:\nYehuda Dar, Muthukumar, V., & Baraniuk, R. (2021). A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning. https://arxiv.org/abs/2109.02355\nFully explained in:\nCode:",
+    "crumbs": [
+      "nbdev-double-descent-dar"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "nbdev-double-descent-dar",
+    "section": "Install",
+    "text": "Install\npip install nbdev_double_descent_dar",
+    "crumbs": [
+      "nbdev-double-descent-dar"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "nbdev-double-descent-dar",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\nimport pandas as pd\n\n\nX = pd.DataFrame({'a':range(1,10), 'b':range(2,11), 'c':range(3,12)})\ny = pd.DataFrame({'target':range(100,110)})\nX, y\n\n(   a   b   c\n 0  1   2   3\n 1  2   3   4\n 2  3   4   5\n 3  4   5   6\n 4  5   6   7\n 5  6   7   8\n 6  7   8   9\n 7  8   9  10\n 8  9  10  11,\n    target\n 0     100\n 1     101\n 2     102\n 3     103\n 4     104\n 5     105\n 6     106\n 7     107\n 8     108\n 9     109)\n\n\n\nrandom_state=1\nnum_rows=3\nnum_cols=2\n\nX_sub, y_sub = sample_rows_and_cols(X, y, num_rows, num_cols, random_state=random_state, replace=False)\n\n\nX_sub, y_sub\n\n(   a  c\n 5  6  8\n 1  2  4\n 6  7  9,\n    target\n 5     105\n 1     101\n 6     106)",
+    "crumbs": [
+      "nbdev-double-descent-dar"
+    ]
+  }
+]
