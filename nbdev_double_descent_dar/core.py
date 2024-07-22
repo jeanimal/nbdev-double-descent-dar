@@ -15,6 +15,7 @@ def say_hello(to):
 # I am re-adding these imports so examples work but they should be included in the package
 import pandas as pd
 import numpy as np
+
 def sample_rows_and_cols(X: pd.DataFrame, y: pd.DataFrame, num_sampled_rows: int, num_sampled_columns: int, random_state: int, replace: bool) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Samples the same num_sampled_rows from X and y and sample num_sampled_columns from X.
